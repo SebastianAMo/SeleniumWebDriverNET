@@ -1,24 +1,24 @@
 {
-    "specFlow": {
-        "language": {
-            "feature": "en" // Idioma de las características, por defecto en inglés
-        },
-        "bindingCulture": {
-            "name": "en" // Idioma para los archivos de binding, puede ser 'en', 'es', etc.
-        },
-        "unitTestProvider": {
-            "name": "mstest" // Usando MSTest como el framework de pruebas
-        },
-        "plugins": [
-            {
-                "name": "SpecFlow.MsTest",
-                "type": "Runtime"
-            }
-        ],
-        "stepAssemblies": [
-            {
-                "assembly": "SeleniumWebDriverNET" // Asegúrate de poner el nombre de tu ensamblado principal
-            }
-        ]
-    }
+  "specFlow": {
+    "language": {
+      "feature": "en"
+    },
+    "bindingCulture": {
+      "name": "en"
+    },
+    "unitTestProvider": {
+      "name": "mstest"
+    },
+    "plugins": [
+      {
+        "name": "SpecFlow.MsTest",
+        "type": "Runtime"
+      }
+    ],
+    "stepAssemblies": [
+      {
+        "assembly": "SeleniumWebDriverNET"
+      }
+    ]
+  }
 }

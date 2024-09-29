@@ -94,12 +94,14 @@ namespace SeleniumWebDriverNET.Feature
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Test input on example site")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Test Example Site")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Browser_Chrome")]
         public void TestInputOnExampleSite()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Browser_Chrome"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test input on example site", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 2
+#line 4
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -109,10 +111,10 @@ namespace SeleniumWebDriverNET.Feature
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 5
     testRunner.Given("I navigate to \"https://example.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 4
+#line 6
     testRunner.Then("the title should contain \"Example\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

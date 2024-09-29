@@ -1,8 +1,9 @@
 using FluentAssertions;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
+using SeleniumWebDriverNET.Driver;
 
-namespace SeleniumWebDriverNET
+namespace SeleniumWebDriverNET.Steps
 {
     [Binding]
     public class ExampleSiteSteps

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 
 namespace SeleniumWebDriverNET
@@ -29,9 +30,14 @@ namespace SeleniumWebDriverNET
                 case "firefox":
                     Driver = new FirefoxDriver();
                     break;
+                case "chrome":
+                    Driver = new ChromeDriver();
+                    break;
                 default:
                     throw new ArgumentException("Invalid browser name", browserName);
             }
+
+            Driver.Manage().Window.Maximize();
         }
 
         public void CloseBrowser()

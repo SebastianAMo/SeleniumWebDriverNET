@@ -1,6 +1,6 @@
 using TechTalk.SpecFlow;
 
-namespace SeleniumWebDriverNET
+namespace SeleniumWebDriverNET.Driver
 {
     [Binding]
     public class TestHooks(WebDriverSetup webDriverSetup)
