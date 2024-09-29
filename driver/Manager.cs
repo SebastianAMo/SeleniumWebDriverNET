@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium;
 
 namespace SeleniumWebDriverNET
@@ -32,6 +33,9 @@ namespace SeleniumWebDriverNET
                     break;
                 case "chrome":
                     Driver = new ChromeDriver();
+                    break;
+                case "edge":
+                    Driver = new EdgeDriver();
                     break;
                 default:
                     throw new ArgumentException("Invalid browser name", browserName);

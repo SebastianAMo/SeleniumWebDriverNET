@@ -11,7 +11,7 @@ namespace SeleniumWebDriverNET.Driver
         [BeforeScenario]
         public void BeforeScenario()
         {
-            _webDriverSetup.StartBrowser("firefox");
+            _webDriverSetup.StartBrowser("edge");
         }
 
         // Este hook se ejecutará después de cada escenario
