@@ -30,7 +30,7 @@ namespace SeleniumWebDriverNET
                     Driver = new FirefoxDriver();
                     break;
                 default:
-                    throw new System.ArgumentException("Invalid browser name", browserName);
+                    throw new ArgumentException("Invalid browser name", browserName);
             }
         }
 

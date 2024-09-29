@@ -9,17 +9,14 @@ namespace SeleniumWebDriverNET
     {
         private readonly WebDriverSetup _webDriverSetup;
 
-        public ExampleSiteSteps(WebDriverSetup webDriverSetup) => _webDriverSetup = webDriverSetup;
-
-        [BeforeScenario]
-        public void BeforeScenario()
+        public ExampleSiteSteps(WebDriverSetup webDriverSetup)
         {
-            _webDriverSetup.StartBrowser("firefox");
+            _webDriverSetup = webDriverSetup;
         }
 
         [Given(@"I navigate to ""(.*)""")]
         public void GivenINavigateTo(string url)
-        {  // Iniciar el navegador
+        {
             _webDriverSetup.Driver.Navigate().GoToUrl(url);
         }
 
@@ -29,13 +26,5 @@ namespace SeleniumWebDriverNET
             var title = _webDriverSetup.Driver.Title;
             title.Should().Contain(titleText);
         }
-
-        [AfterScenario]
-        public void AfterScenario()
-        {
-            _webDriverSetup.CloseBrowser();
-        }
     }
-
-
 }
