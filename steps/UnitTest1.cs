@@ -18,6 +18,7 @@ namespace SeleniumWebDriverNET.Steps
         [Given(@"I navigate to ""(.*)""")]
         public void GivenINavigateTo(string url)
         {
+            _webDriverSetup.StartBrowser("chrome");
             _webDriverSetup.Driver.Navigate().GoToUrl(url);
         }
 

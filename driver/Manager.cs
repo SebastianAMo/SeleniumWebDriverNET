@@ -3,7 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium;
 
-namespace SeleniumWebDriverNET
+namespace SeleniumWebDriverNET.Driver
 {
     public class WebDriverSetup
     {
@@ -27,20 +27,18 @@ namespace SeleniumWebDriverNET
 
         public void StartBrowser(string browserName)
         {
-            switch (browserName.ToLower())
+            if (browserName == null)
             {
-                case "firefox":
-                    Driver = new FirefoxDriver();
-                    break;
-                case "chrome":
-                    Driver = new ChromeDriver();
-                    break;
-                case "edge":
-                    Driver = new EdgeDriver();
-                    break;
-                default:
-                    throw new ArgumentException("Invalid browser name", browserName);
+                throw new ArgumentNullException(nameof(browserName));
             }
+
+            Driver = browserName.ToLower() switch
+            {
+                "firefox" => new FirefoxDriver(),
+                "chrome" => new ChromeDriver(),
+                "edge" => new EdgeDriver(),
+                _ => throw new ArgumentException($"Invalid browser name: {browserName}", nameof(browserName))
+            };
 
             Driver.Manage().Window.Maximize();
         }
