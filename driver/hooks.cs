@@ -1,24 +1,23 @@
 using TechTalk.SpecFlow;
+using System.Collections.Specialized; // Necesario para IOrderedDictionary
 
 namespace SeleniumWebDriverNET.Driver
 {
     [Binding]
-    public class TestHooks(WebDriverSetup webDriverSetup)
+    public class TestHooks
     {
-        private readonly WebDriverSetup _webDriverSetup = webDriverSetup;
+        private readonly WebDriverSetup _webDriverSetup;
 
-        // Este hook se ejecutará antes de cada escenario
-        [BeforeScenario]
-        public void BeforeScenario()
+        public TestHooks(WebDriverSetup webDriverSetup)
         {
-            _webDriverSetup.StartBrowser("edge");
+            _webDriverSetup = webDriverSetup;
         }
 
         // Este hook se ejecutará después de cada escenario
         [AfterScenario]
         public void AfterScenario()
         {
-            _webDriverSetup.CloseBrowser();
+            _webDriverSetup.CloseBrowser();  // Cerrar el navegador después de cada escenario
         }
     }
 }

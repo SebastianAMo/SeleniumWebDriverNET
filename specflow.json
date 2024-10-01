@@ -19,6 +19,12 @@
       {
         "assembly": "SeleniumWebDriverNET"
       }
-    ]
+    ],
+    "runtime": {
+      "execution": {
+        "parallelExecution": true,
+        "testThreadCount": 4
+      }
+    }
   }
 }
