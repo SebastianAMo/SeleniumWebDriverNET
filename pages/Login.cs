@@ -12,6 +12,8 @@ namespace SeleniumWebDriverNET.Pages
         private By LoginButton => By.Id("login-button");
         private By ErrorMessage => By.CssSelector(".error-message-container");
 
+        private By Title => By.XPath("//div[@class='app_logo']\r\n");
+
         // Constructor
         public LoginPage(IWebDriver driver)
         {
@@ -47,6 +49,11 @@ namespace SeleniumWebDriverNET.Pages
             EnterUsername(username);
             EnterPassword(password);
             ClickLoginButton();
+        }
+
+        public string GetTitle()
+        {
+            return _driver.FindElement(Title).Text;
         }
     }
 }

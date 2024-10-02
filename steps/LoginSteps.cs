@@ -38,10 +38,31 @@ namespace SeleniumWebDriverNET.Steps
             _loginPage.ClickLoginButton();
         }
 
-        [Then(@"I should be redirected to the home page")]
-        public void ThenIShouldBeRedirectedToTheHomePage()
+        [When(@"I clear the username and password fields")]
+        public void AndIClearTheUsernameAndPasswordFields()
         {
-            _webDriverSetup.Driver.Url.Should().Be("https://www.saucedemo.com/inventory.html");
+            _loginPage.EnterUsername("");
+            _loginPage.EnterPassword("");
+        }
+
+        [When(@"I clear the password field")]
+        public void WhenIClearThePasswordField()
+        {
+            _loginPage.EnterPassword("");
+        }
+
+        [Then(@"I should see the title ""(.*)""")]
+        public void ThenIShouldBeRedirectedToTheHomePage(string expectedTitle)
+        {
+            var title = _loginPage.GetTitle();
+            title.Should().Be(expectedTitle);
+        }
+
+        [Then(@"I should see the error message ""(.*)""")]
+        public void ThenIShouldSeeTheErrorMessage(string expectedErrorMessage)
+        {
+            var errorMessage = _loginPage.GetErrorMessage();
+            errorMessage.Should().Be(expectedErrorMessage);
         }
     }
 }
