@@ -13,6 +13,9 @@
       {
         "name": "SpecFlow.MsTest",
         "type": "Runtime"
+      },
+      {
+        "name": "SpecFlow.Plus.LivingDoc"
       }
     ],
     "stepAssemblies": [

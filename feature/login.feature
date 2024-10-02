@@ -15,6 +15,7 @@ Feature: Login
     | Firefox   |
     | Chrome    |
 
+  @smoke
   Scenario: Invalid login with empty credentials
   	Given I am on the login page with the url "https://www.saucedemo.com/" using "Chrome"
     When I enter "random_username" and "random_password"
