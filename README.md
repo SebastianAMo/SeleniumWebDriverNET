@@ -2,7 +2,7 @@
 
 # SeleniumWebDriverNET Project
 
-Este proyecto utiliza **SpecFlow**, **Selenium WebDriver**, y **LivingDoc** para generar documentación a partir de pruebas automatizadas. Este README describe los comandos necesarios para limpiar el proyecto, compilarlo, ejecutar las pruebas, y generar la documentaci�n LivingDoc.
+Este proyecto utiliza **SpecFlow**, **Selenium WebDriver**, y **LivingDoc** para generar documentación a partir de pruebas automatizadas. Este README describe los comandos necesarios para limpiar el proyecto, compilarlo, ejecutar las pruebas, y generar la documentación LivingDoc.
 
 ## Prerrequisitos
 
@@ -24,8 +24,8 @@ Para limpiar el proyecto y eliminar los archivos binarios antiguos, utiliza el s
 ```bash
 dotnet clean
 ```
-Restauraci�n de paquetes NuGet
-Si has agregado nuevos paquetes o deseas asegurarte de que todos los paquetes necesarios est�n correctamente instalados, ejecuta:
+Restauración de paquetes NuGet
+Si has agregado nuevos paquetes o deseas asegurarte de que todos los paquetes necesarios están correctamente instalados, ejecuta:
 
 ```bash
 dotnet restore
@@ -37,19 +37,17 @@ Para compilar el proyecto despu�s de haber limpiado y restaurado los paquetes,
 dotnet build
 ```
 
-Ejecuci�n de pruebas
-Para ejecutar las pruebas y generar los resultados que se utilizar�n en LivingDoc, utiliza el siguiente comando. Este comando generar� un archivo TestExecution.json necesario para LivingDoc:
+Ejecución de pruebas
+Para ejecutar las pruebas y generar los resultados que se utilizarán en LivingDoc, utiliza el siguiente comando. Este comando generará un archivo TestExecution.json necesario para LivingDoc:
 
 ```bash
 dotnet test --logger "trx;LogFileName=TestExecution.trx" --results-directory ./bin/Debug/net8.0
 ```
-Generaci�n de LivingDoc con resultados de prueba
-Una vez que las pruebas se hayan ejecutado correctamente, puedes generar la documentaci�n LivingDoc. Usa el siguiente comando para crear un archivo HTML con la documentaci�n generada a partir de las pruebas ejecutadas:
+Generación de LivingDoc con resultados de prueba
+Una vez que las pruebas se hayan ejecutado correctamente, puedes generar la documentaci�n LivingDoc. Usa el siguiente comando para crear un archivo HTML con la documentación generada a partir de las pruebas ejecutadas:
 
 ```bash
-
 livingdoc test-assembly ./bin/Debug/net8.0/SeleniumWebDriverNET.dll -t ./bin/Debug/net8.0/TestExecution.json --output ./bin/Debug/net8.0/LivingDocReport.html
-
 ```
 
 Visualizaci�n del reporte LivingDoc
@@ -65,8 +63,8 @@ Si deseas limpiar nuevamente los binarios del proyecto despu�s de generar el r
 ```bash
 dotnet clean
 ```
-Generaci�n de LivingDoc con un t�tulo personalizado
-Si quieres darle un t�tulo personalizado al reporte de LivingDoc, puedes utilizar el siguiente comando:
+Generación de LivingDoc con un título personalizado
+Si quieres darle un título personalizado al reporte de LivingDoc, puedes utilizar el siguiente comando:
 
 ```bash
 livingdoc test-assembly ./bin/Debug/net8.0/SeleniumWebDriverNET.dll -t ./bin/Debug/net8.0/TestExecution.json --title "Selenium WebDriver Project" --output ./bin/Debug/net8.0/LivingDocReport.html
@@ -75,7 +73,7 @@ livingdoc test-assembly ./bin/Debug/net8.0/SeleniumWebDriverNET.dll -t ./bin/Deb
 Ejecuci�n de caracter�sticas espec�ficas (features) o tags
 Si deseas ejecutar solo caracter�sticas (features) espec�ficas o usar tags para filtrar las pruebas, puedes hacerlo con estos comandos:
 
-Ejecutar una feature espec�fica:
+Ejecutar una feature específica:
 ```bash
 
 dotnet test --filter FullyQualifiedName~Login.feature
@@ -85,8 +83,8 @@ Ejecutar escenarios con tags espec�ficos:
 ```bash
 dotnet test --filter TestCategory=important
 ```
-Ejecutar con m�ltiples tags (OR):
+Ejecutar con multiples tags (OR):
 
 ```bash
-dotnet test --filter TestCategory=important|smoke
+dotnet test --filter TestCategory=smoke
 ```
