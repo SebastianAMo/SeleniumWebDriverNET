@@ -9,7 +9,7 @@ Feature: Test Login form with empty credentials
     When I enter "random_username" and "random_password"
     And I clear the username and password fields
     And I click the login button
-    Then I should see the error message "Epic sadface: Username and password do not match any user in this service"
+    Then I should see the error message "Epic sadface: Username is required"
 
   Examples:
     | Browser   |

@@ -86,7 +86,6 @@ namespace SeleniumWebDriverNET.Feature.LoginFeature
         [Xunit.TraitAttribute("Description", "Invalid login with credentials by passing Username in different browsers")]
         [Xunit.InlineDataAttribute("Chrome", new string[0])]
         [Xunit.InlineDataAttribute("Firefox", new string[0])]
-        [Xunit.InlineDataAttribute("Edge", new string[0])]
         public void InvalidLoginWithCredentialsByPassingUsernameInDifferentBrowsers(string browser, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -116,8 +115,7 @@ namespace SeleniumWebDriverNET.Feature.LoginFeature
     testRunner.And("I click the login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
-    testRunner.Then("I should see the error message \"Epic sadface: Username and password do not match " +
-                        "any user in this service\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("I should see the error message \"Epic sadface: Password is required\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

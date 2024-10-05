@@ -122,8 +122,7 @@ namespace SeleniumWebDriverNET.Feature.LoginFeature
     testRunner.And("I click the login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
-    testRunner.Then("I should see the error message \"Epic sadface: Username and password do not match " +
-                        "any user in this service\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("I should see the error message \"Epic sadface: Username is required\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

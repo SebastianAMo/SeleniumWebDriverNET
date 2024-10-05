@@ -1,90 +1,106 @@
 # SeleniumWebDriverNET
 
-# SeleniumWebDriverNET Project
+This project uses SpecFlow, Selenium WebDriver, and LivingDoc to generate documentation from automated tests
 
-Este proyecto utiliza **SpecFlow**, **Selenium WebDriver**, y **LivingDoc** para generar documentación a partir de pruebas automatizadas. Este README describe los comandos necesarios para limpiar el proyecto, compilarlo, ejecutar las pruebas, y generar la documentación LivingDoc.
+## Technologies
 
-## Prerrequisitos
+- .NET 8
+- SpecFlow
+- XUnit
+- Selenium WebDriver
+- LivingDoc
+- BBD
 
-Aseg�rate de tener instalados los siguientes componentes:
+## Browser Support
 
-- [.NET SDK](https://dotnet.microsoft.com/download)
-- [SpecFlow LivingDoc CLI](https://docs.specflow.org/projects/specflow-livingdoc/en/latest/Getting-Started.html)
+Currently, the project supports the following browsers:
 
-Puedes instalar SpecFlow LivingDoc CLI usando el siguiente comando:
+- Chrome
+- Firefox
+- Edge
 
-```bash
-dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
-```
+In the scenarios, to use different browsers, Scenario Outlines are used, which take the browsers to be used as examples.
+
+## Tasks
+
+1. UC-1 Test Login form with empty credentials
+
+	Type any credentials into "Username" and "Password" fields.
+	Clear the inputs.
+	Hit the "Login" button.
+	Check the error messages: "Username is required".
+
+2. UC-2 Test Login form with credentials by passing Username
+
+	Type any credentials in username.
+	Enter password.
+	Clear the "Password" input.
+	Hit the "Login" button.
+	Check the error messages: "Password is required".
 
 
-Limpieza del proyecto
-Para limpiar el proyecto y eliminar los archivos binarios antiguos, utiliza el siguiente comando:
+3. UC-3 Test Login form with credentials by passing Username & Password
 
-```bash
-dotnet clean
-```
-Restauración de paquetes NuGet
-Si has agregado nuevos paquetes o deseas asegurarte de que todos los paquetes necesarios están correctamente instalados, ejecuta:
+	Type credentials in username which are under Accepted username are sections.
+	Enter password as secret sauce.
+	Click on Login and validate the title “Swag Labs” in the dashboard.
 
-```bash
-dotnet restore
-```
-Compilaci�n del proyecto
-Para compilar el proyecto despu�s de haber limpiado y restaurado los paquetes, ejecuta:
+## Notes
 
-```bash
-dotnet build
-```
+- UC-1 and UC-2 failed when clear fields with the `Clear()` method. The error message with this method is : `Epic sadface: Username and password do not match any user in this service`.
 
-Ejecución de pruebas
-Para ejecutar las pruebas y generar los resultados que se utilizarán en LivingDoc, utiliza el siguiente comando. Este comando generará un archivo TestExecution.json necesario para LivingDoc:
+  I used the `SendKeys(Keys.Control + "a")` method to select all the text in the input and then the `SendKeys(Keys.Delete)` method to delete the text. Another approach to clearing the fields is to simulate deleting the text character by character. 
 
-```bash
-dotnet test --logger "trx;LogFileName=TestExecution.trx" --results-directory ./bin/Debug/net8.0
-```
-Generación de LivingDoc con resultados de prueba
-Una vez que las pruebas se hayan ejecutado correctamente, puedes generar la documentaci�n LivingDoc. Usa el siguiente comando para crear un archivo HTML con la documentación generada a partir de las pruebas ejecutadas:
+## Commands
 
-```bash
-livingdoc test-assembly ./bin/Debug/net8.0/SeleniumWebDriverNET.dll -t ./bin/Debug/net8.0/TestExecution.json --output ./bin/Debug/net8.0/LivingDocReport.html
-```
+The following commands are used to run the project
 
-Visualizaci�n del reporte LivingDoc
-Despu�s de generar la documentaci�n, puedes abrir el archivo HTML generado para ver el reporte. Usa el siguiente comando para abrir el archivo en tu navegador:
+- Install LivingDoc CLI
+  ```bash
+  dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+  ```
 
-```bash
-start ./bin/Debug/net8.0/LivingDocReport.html
-```
-Comandos opcionales
-Limpiar binarios despu�s de generar LivingDoc
-Si deseas limpiar nuevamente los binarios del proyecto despu�s de generar el reporte de LivingDoc, puedes ejecutar:
+- Clean the project
+  ```bash
+  dotnet clean
+  ```
 
-```bash
-dotnet clean
-```
-Generación de LivingDoc con un título personalizado
-Si quieres darle un título personalizado al reporte de LivingDoc, puedes utilizar el siguiente comando:
+- Clean and restore the project
+  ```bash
+  dotnet restore
+  ```
 
-```bash
-livingdoc test-assembly ./bin/Debug/net8.0/SeleniumWebDriverNET.dll -t ./bin/Debug/net8.0/TestExecution.json --title "Selenium WebDriver Project" --output ./bin/Debug/net8.0/LivingDocReport.html
-```
+- Build the project
+  ```bash
+  dotnet build
+  ```
 
-Ejecuci�n de caracter�sticas espec�ficas (features) o tags
-Si deseas ejecutar solo caracter�sticas (features) espec�ficas o usar tags para filtrar las pruebas, puedes hacerlo con estos comandos:
+- Run the tests and generate a test report
+  ```bash
+  dotnet test --logger "trx;LogFileName=TestExecution.trx" --results-directory ./bin/Debug/net8.0
+  ```
 
-Ejecutar una feature específica:
-```bash
+- Generate LivingDoc report
+  ```bash
+  livingdoc test-assembly ./bin/Debug/net8.0/SeleniumWebDriverNET.dll -t ./bin/Debug/net8.0/TestExecution.json --output ./bin/Debug/net8.0/LivingDocReport.html
+  ```
 
-dotnet test --filter FullyQualifiedName~Login.feature
-```
-Ejecutar escenarios con tags espec�ficos:
 
-```bash
-dotnet test --filter TestCategory=important
-```
-Ejecutar con multiples tags (OR):
+- Open the LivingDoc report
+  ```bash
+  start ./bin/Debug/net8.0/LivingDocReport.html
+  ```
 
-```bash
-dotnet test --filter TestCategory=smoke
-```
+- Run the tests with a filter
+  ```bash
+  dotnet test --filter FullyQualifiedName~Login.feature
+  ```
+
+- Run the tests with a tag
+  ```bash
+  dotnet test --filter TestCategory=important
+  ```
+
+### Author
+
+[Sebastian Agudelo Morales](https://www.linkedin.com/in/sebastianamo) 

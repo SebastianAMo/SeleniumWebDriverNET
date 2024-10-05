@@ -41,14 +41,17 @@ namespace SeleniumWebDriverNET.Steps
         [When(@"I clear the username and password fields")]
         public void AndIClearTheUsernameAndPasswordFields()
         {
-            _loginPage.EnterUsername("");
-            _loginPage.EnterPassword("");
+            _loginPage.ClearUsernameFieldKeys();
+            _loginPage.ClearPasswordFieldKeys();
+            // _loginPage.ClearUsernameField();
+            // _loginPage.ClearPasswordField();
         }
 
         [When(@"I clear the password field")]
         public void WhenIClearThePasswordField()
         {
-            _loginPage.EnterPassword("");
+            _loginPage.ClearPasswordFieldKeys();
+            // _loginPage.ClearPasswordField();
         }
 
         [Then(@"I should see the title ""(.*)""")]

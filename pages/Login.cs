@@ -1,4 +1,5 @@
 using OpenQA.Selenium;
+using SeleniumWebDriverNET.Utils;
 
 namespace SeleniumWebDriverNET.Pages
 {
@@ -7,12 +8,11 @@ namespace SeleniumWebDriverNET.Pages
         private readonly IWebDriver _driver;
 
         // Locators
-        private By UsernameField => By.Id("user-name");
-        private By PasswordField => By.Id("password");
-        private By LoginButton => By.Id("login-button");
+        private By UsernameField => By.CssSelector("#user-name");
+        private By PasswordField => By.CssSelector("#password");
+        private By LoginButton => By.CssSelector("#login-button");
         private By ErrorMessage => By.CssSelector(".error-message-container");
-
-        private By Title => By.XPath("//div[@class='app_logo']\r\n");
+        private By Title => By.CssSelector("div.app_logo");
 
         // Constructor
         public LoginPage(IWebDriver driver)
@@ -23,13 +23,11 @@ namespace SeleniumWebDriverNET.Pages
         // Actions
         public void EnterUsername(string username)
         {
-            _driver.FindElement(UsernameField).Clear();
             _driver.FindElement(UsernameField).SendKeys(username);
         }
 
         public void EnterPassword(string password)
         {
-            _driver.FindElement(PasswordField).Clear();
             _driver.FindElement(PasswordField).SendKeys(password);
         }
 
@@ -43,17 +41,32 @@ namespace SeleniumWebDriverNET.Pages
             return _driver.FindElement(ErrorMessage).Text;
         }
 
-        // Login method to combine actions
-        public void Login(string username, string password)
-        {
-            EnterUsername(username);
-            EnterPassword(password);
-            ClickLoginButton();
-        }
-
         public string GetTitle()
         {
             return _driver.FindElement(Title).Text;
         }
+
+
+        // Separate methods for clearing fields
+        public void ClearUsernameField()
+        {
+            FieldUtils.ClearFieldBySelectingAndDeleting(_driver, UsernameField);
+        }
+
+        public void ClearPasswordField()
+        {
+            FieldUtils.ClearFieldBySelectingAndDeleting(_driver, PasswordField);
+        }
+
+        public void ClearUsernameFieldKeys()
+        {
+            FieldUtils.ClearFieldByRepeatedlyDeleting(_driver, UsernameField);
+        }
+
+        public void ClearPasswordFieldKeys()
+        {
+            FieldUtils.ClearFieldByRepeatedlyDeleting(_driver, PasswordField);
+        }
+
     }
 }

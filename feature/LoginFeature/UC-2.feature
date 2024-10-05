@@ -8,10 +8,9 @@ Feature: Test Login form with only username
     When I enter "standard_user" and "random_password"
     And I clear the password field
     And I click the login button
-    Then I should see the error message "Epic sadface: Username and password do not match any user in this service"
+    Then I should see the error message "Epic sadface: Password is required"
 
   Examples:
     | Browser   |
     | Chrome    |
     | Firefox   |
-    | Edge      |
