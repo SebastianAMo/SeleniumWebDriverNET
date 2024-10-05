@@ -2,7 +2,7 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Infrastructure;
 using System.IO;
 using System.Collections.Specialized;
-using OpenQA.Selenium; // Necesario para IOrderedDictionary
+using OpenQA.Selenium;
 
 namespace SeleniumWebDriverNET.Driver
 {
@@ -18,13 +18,15 @@ namespace SeleniumWebDriverNET.Driver
             _specFlowOutputHelper = specFlowOutputHelper;
         }
 
-        // Este hook se ejecutará después de cada escenario
+        // This hook is executed before each scenario
         [AfterScenario]
         public void AfterScenario()
         {
-            _webDriverSetup.CloseBrowser();  // Cerrar el navegador después de cada escenario
+            _webDriverSetup.CloseBrowser();
         }
 
+
+        // This hook is executed after each step, and takes a screenshot
         [AfterStep()]
         public void TakeScreenshotAfterEachStep()
         {

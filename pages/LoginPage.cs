@@ -8,13 +8,11 @@ namespace SeleniumWebDriverNET.Pages
         private readonly IWebDriver _driver;
 
         // Locators
-        private By UsernameField => By.CssSelector("#user-name");
-        private By PasswordField => By.CssSelector("#password");
-        private By LoginButton => By.CssSelector("#login-button");
-        private By ErrorMessage => By.CssSelector(".error-message-container");
-        private By Title => By.CssSelector("div.app_logo");
+        private static By UsernameField => By.CssSelector("#user-name");
+        private static By PasswordField => By.CssSelector("#password");
+        private static By LoginButton => By.CssSelector("#login-button");
+        private static By ErrorMessage => By.CssSelector(".error-message-container");
 
-        // Constructor
         public LoginPage(IWebDriver driver)
         {
             _driver = driver;
@@ -41,13 +39,6 @@ namespace SeleniumWebDriverNET.Pages
             return _driver.FindElement(ErrorMessage).Text;
         }
 
-        public string GetTitle()
-        {
-            return _driver.FindElement(Title).Text;
-        }
-
-
-        // Separate methods for clearing fields
         public void ClearUsernameField()
         {
             FieldUtils.ClearFieldBySelectingAndDeleting(_driver, UsernameField);

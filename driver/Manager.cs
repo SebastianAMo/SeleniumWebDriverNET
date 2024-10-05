@@ -45,10 +45,7 @@ namespace SeleniumWebDriverNET.Driver
 
         public void CloseBrowser()
         {
-            if (_driver != null)
-            {
-                _driver.Quit();
-            }
+            _driver?.Quit();
         }
     }
 }

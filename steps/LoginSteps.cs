@@ -11,6 +11,8 @@ namespace SeleniumWebDriverNET.Steps
     {
         private readonly WebDriverSetup _webDriverSetup;
         private LoginPage _loginPage;
+        private DashboardPage _dashboardPage;
+
 
         public LoginSteps(WebDriverSetup webDriverSetup)
         {
@@ -21,7 +23,7 @@ namespace SeleniumWebDriverNET.Steps
         public void GivenINavigateToTheLoginPageWithBrowser(string url, string browser)
         {
             _webDriverSetup.StartBrowser(browser);
-            _loginPage = new LoginPage(_webDriverSetup.Driver); // Iniciamos la página de login
+            _loginPage = new LoginPage(_webDriverSetup.Driver);
             _webDriverSetup.Driver.Navigate().GoToUrl(url);
         }
 
@@ -57,7 +59,8 @@ namespace SeleniumWebDriverNET.Steps
         [Then(@"I should see the title ""(.*)""")]
         public void ThenIShouldBeRedirectedToTheHomePage(string expectedTitle)
         {
-            var title = _loginPage.GetTitle();
+            _dashboardPage = new DashboardPage(_webDriverSetup.Driver);
+            var title = _dashboardPage.GetTitle();
             title.Should().Be(expectedTitle);
         }
 
